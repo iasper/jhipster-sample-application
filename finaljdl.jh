@@ -1,0 +1,36 @@
+entity User	{
+	name String,
+    email String
+}
+entity Weight	{
+	date LocalDate,
+    weight Double
+}
+
+entity Preferencias	{
+	metaSemanal Double required min(10) max(21),
+    unidadesPeso Double
+}
+
+entity	PresionSanguinea	{
+	date LocalDate,
+    sistolica Integer,
+    diastolica Integer
+}
+
+entity Puntos	{
+	date LocalDate,
+    ejercicio Integer,
+    comidas Integer,
+    alcohol Integer,
+    notas String maxlength(140)
+}
+
+relationship ManyToOne	{
+	Puntos to User
+    Weight to User
+    PresionSanguinea to User
+}
+relationship OneToOne	{
+	Preferencias to User
+}
